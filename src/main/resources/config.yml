@@ -1,0 +1,5 @@
+messages:
+  # If a user is denied permission.
+  no-permission: "&aYou have no permission to use this command."
+  # The caramel prefix only shows on /caramel.
+  caramel-prefix: "<yellow>[<gold>Caramel<yellow>]<green>"

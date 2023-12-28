@@ -1,0 +1,11 @@
+name: Caramel
+version: '${project.version}'
+main: dev.klash.caramel.Caramel
+api-version: '1.20'
+commands:
+  caramel:
+    description: "Caramel's default command"
+permissions:
+  caramel.commands.base:
+    default: 'true'
+    description: "Allows caramel's base command"

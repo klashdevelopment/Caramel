@@ -2,6 +2,7 @@ package dev.klash.caramel;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -13,11 +14,11 @@ import java.util.List;
 
 public class CaramelUtility {
     public static Component colorcomp(String text) {
-        return MiniMessage.miniMessage().deserialize(text);
+        return MiniMessage.miniMessage().deserialize(text).decoration(TextDecoration.ITALIC, false);
     }
     public static List<String> tabComplete(String arg, List<String> choices) {
         List<String> res = new ArrayList<>();
-        for(String a : Arrays.asList("version", "commands")) {
+        for(String a : choices) {
             if(a.toLowerCase().startsWith(arg.toLowerCase()))
                 res.add(a);
         }

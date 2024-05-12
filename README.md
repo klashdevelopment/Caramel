@@ -24,6 +24,7 @@ depend: [Caramel]
 ```
 
 ## Command
+# DOCS BELOW ARE DEPRECATED
 Create a command by:
 - Create a new class implementing CaramelCommand and add in the methods.
 - Make getDetails return a new CaramelCommandDetails(label, permission, plugin)

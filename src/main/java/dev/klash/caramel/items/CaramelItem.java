@@ -7,4 +7,8 @@ public interface CaramelItem {
     public CaramelItemDetail getDetails();
     public ItemStack modifyBeforeFinalizing(ItemStack item);
     public void onItemUse(ClickType type, ItemStack item, PlayerInteractEvent event);
+
+    public default boolean cancelEvent() {
+        return true;
+    }
 }

@@ -12,21 +12,6 @@ public class CaramelItemList {
     public void register(CaramelItem item) {
         itemList.add(item);
     }
-    public CaramelItem find(String id) {
-        for(CaramelItem cmd : itemList) {
-            if(cmd.getDetails().id() == id) {
-                return cmd;
-            }
-        }
-        return null;
-    }
-    public void derail(String id) {
-        for(CaramelItem cmd : itemList) {
-            if(cmd.getDetails().id() == id) {
-                itemList.remove(cmd);
-            }
-        }
-    }
 
     public List<CaramelItem> getItemList() {
         return itemList;

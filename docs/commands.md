@@ -1,5 +1,5 @@
 # Commands
-## First steps
+### First steps
 
 Do these steps the **first time** you add Caramel to your plugin.
 - Add listeners pointing to Caramel.
@@ -31,7 +31,7 @@ public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotN
 </details>
 
 
-## A new command
+### A new command
 First, lets make a brand new class and have it implement a Caramel Command. For this tutorial, I'll be using the class name "MyCommand" and main file "MyPlugin".
 ```java
 public class MyCommand implements CaramelCommand {
@@ -63,7 +63,7 @@ public CaramelCommandDetail getDetails() {
 }
 ```
 
-# Registering
+### Registering
 1. Make sure your command is added to your `plugin.yml` file under `commands`. It should have the basic layout of `commands > my-command-name > description+usage`.
 2. Add a new variable in your main class to store your command:
 ```java
@@ -84,3 +84,51 @@ public class MyPlugin extends JavaPlugin {
     }
 ```
 4. All set! Your command is now registered.
+
+<br/><br/><br/>
+
+## The garnish on top
+### (OPTIONAL) Tab Completion
+Step 1 - Dead simple - Add this code to your command file:
+```java
+    @Override
+    public List<String> complete(String[] args) {
+        ...
+    }
+```
+
+#### Tab completion (the boring way)
+Simply `return` a List<> of your choices.
+```java
+return Arrays.asList("my", "choices");
+```
+
+#### With a little spice
+Caramel comes bundled with a tab completion handler for some no-hassle satisfying tab completion.
+```java
+// Both of these example only work for one argument, as we only use "args[0]". See below for more.
+
+return CaramelUtility.tabComplete(args[0], Arrays.asList("example", "choices"));
+
+// OR, use Caramel's tabCompletePlayers option.
+
+return CaramelUtility.tabCompletePlayers(args[0], Bukkit.getOnlinePlayers());
+```
+This will shorten the tab completion options based on how much you have already typed (like autocomplete). To further the complexity (aka if you have multiple args) you can handle it based on what argument you are on. Example:
+
+Lets say you have a command with the usage /command <pet> <name> <player>.
+Your args would be ["pet", "name", "player"] (0,1,2). Lets try this:
+
+```java
+if(args.length == 1) { // first argument - pet
+    String arg = args[0]; // [0] is the first argument in an array.
+    return CaramelUtility.tabComplete(arg, Arrays.asList("cat", "dog"));
+} else if(args.length == 2) { // next argument - name, no tab completion
+    return Collections.emptyList();
+} else if(args.length == 3) { // last argument - player, player completion
+    String arg = args[2];
+    return CaramelUtility.tabCompletePlayers(arg, Bukkit.getOnlinePlayers());
+}
+```
+
+Nice!

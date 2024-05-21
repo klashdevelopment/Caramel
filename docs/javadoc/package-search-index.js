@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"dev.klash.caramel"},{"l":"dev.klash.caramel.commands"},{"l":"dev.klash.caramel.currency"},{"l":"dev.klash.caramel.gui"},{"l":"dev.klash.caramel.items"},{"l":"dev.klash.caramel.plugin"},{"l":"dev.klash.caramel.recipe"}];updateSearchResults();

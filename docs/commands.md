@@ -1,5 +1,7 @@
 # Commands
-## First time
+<details>
+  <summary><h2>First time</h2></summary>
+
 Do these steps the **first time** you add Caramel to your plugin.
 - Add listeners pointing to Caramel.
 In your main class, add the following to your file (assuming you haven't already made listeners for these):
@@ -28,7 +30,18 @@ public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotN
 ```
   
 </details>
+</details>
 
-## Creating your command class
+<details>
+  <summary><h2>Creating a command class</h2></summary>
 
-## Registering
+    First, lets make a brand new class and have it implement a Caramel Command. For this tutorial, I'll be using the class name "MyCommand" and main file "MyPlugin".
+    ```java
+    public class MyCommand implements CaramelCommand {}
+    ```
+    
+</details>
+
+<details>
+  <summary><h2>Registering a command class</h2></summary>
+</details>

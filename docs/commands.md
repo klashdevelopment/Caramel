@@ -1,6 +1,5 @@
 # Commands
-<details>
-  <summary><h2>First time</h2></summary>
+## First steps
 
 Do these steps the **first time** you add Caramel to your plugin.
 - Add listeners pointing to Caramel.
@@ -30,18 +29,58 @@ public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotN
 ```
   
 </details>
-</details>
 
-<details>
-  <summary><h2>Creating a command class</h2></summary>
 
-    First, lets make a brand new class and have it implement a Caramel Command. For this tutorial, I'll be using the class name "MyCommand" and main file "MyPlugin".
-    ```java
-    public class MyCommand implements CaramelCommand {}
-    ```
+## A new command
+First, lets make a brand new class and have it implement a Caramel Command. For this tutorial, I'll be using the class name "MyCommand" and main file "MyPlugin".
+```java
+public class MyCommand implements CaramelCommand {
+    @Override
+    public CaramelCommandDetail getDetails() {
+        return ...;
+    }
+
+    @Override
+    public void onPlayer(Player player, List<String> args) {
+        player.sendMessage("Hello Player!");
+    }
+
+    @Override
+    public void onConsole(CommandSender sender, List<String> args) {
+        sender.sendMessage("Hello Console!");
+    }
+}
+```
+
+After this, fill in the getDetails function like below:
+```java
+public CaramelCommandDetail getDetails() {
+    return new CaramelCommandDetail(
+                "label", // Must be the same as in plugin.yml
+                "plugin.permission", // Can be any permission, you should define your perms in plugin.yml tho
+                MyPlugin.getPlugin(MyPlugin.class)
+    );
+}
+```
+
+# Registering
+1. Make sure your command is added to your `plugin.yml` file under `commands`. It should have the basic layout of `commands > my-command-name > description+usage`.
+2. Add a new variable in your main class to store your command:
+```java
+public class MyPlugin extends JavaPlugin {
+    public CaramelCommand myCommand;
     
-</details>
-
-<details>
-  <summary><h2>Registering a command class</h2></summary>
-</details>
+    // rest of your code below
+}
+```
+3. Let caramel know about your command by registering & de-registering.
+```java
+    public void onEnable() {
+        Caramel.getInstance().commands.register(myCommand = new MyCommand());
+    }
+    
+    public void onDisable() {
+        Caramel.getInstance().commands.getCommandList().remove(myCommand);
+    }
+```
+4. All set! Your command is now registered.

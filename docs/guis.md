@@ -43,6 +43,7 @@ public MyGUI() {
     // Example - Override crafting table menu if player is op
     setOverride(CaramelGuiOverrides.CRAFTING_TABLE, (player) -> player.isOP());
 }
+```
 
 ### Pagintation
 

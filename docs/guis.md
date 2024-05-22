@@ -63,3 +63,18 @@ This feature is **on its way** (90% done)
 ### Anvil and Sign Input Prompts
 
 This feature is **on its way** (50% done)
+
+## Register your GUI
+
+```java
+public class MyPlugin {
+    public CaramelGui myGui;
+
+    public void onEnable() {
+        Caramel.getInstance().guis.add(myGui = new MyGui());
+    }
+    public void onDisable() {
+        Caramel.getInstance().guis.getGuis().remove(myGui);
+    }
+}
+```

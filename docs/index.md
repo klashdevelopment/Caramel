@@ -2,7 +2,8 @@
 Caramel is a multipurpose AIO api for PaperAPI plugins. ***WILL NOT WORK FOR SPIGOTAPI***
 
 ## Quickstart
-1. Add Caramel to your maven:
+- Add Caramel to your maven:
+
 ```xml
 <repository>
    <id>klashdevelopment</id>
@@ -16,10 +17,13 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***WILL NOT WORK FOR SPI
    <scope>provided</scope>
 </dependency>
 ```
-2. Add it as a dependency in your plugin.yml or paper-plugin.yml
-```yml
+
+- Add it as a dependency in your plugin.yml or paper-plugin.yml
+
+```yaml
 depend: [Caramel]
 ```
+
 
 ## Features
 Caramel has a few main features.

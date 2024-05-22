@@ -12,24 +12,6 @@ public List<String> onTabComplete(CommandSender sender, Command command, String 
     return Caramel.getInstance().onTabComplete(sender, command, alias, args);
 }
 ```
-<details>
-  <summary>
-    Code with IntelliJ Annotations
-  </summary>
-
-```java
-@Override
-public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-    return Caramel.getInstance().onCommand(sender, command, label, args);
-}
-@Override
-public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-    return Caramel.getInstance().onTabComplete(sender, command, alias, args);
-}
-```
-  
-</details>
-
 
 ### A new command
 First, lets make a brand new class and have it implement a Caramel Command. For this tutorial, I'll be using the class name "MyCommand" and main file "MyPlugin".

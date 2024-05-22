@@ -29,6 +29,17 @@ Inside the `setup#` function, we can add and set items using functions ( see fun
     });
 ```
 
+**Function Guide**
+
+| Function | Description | Args | Example |
+| --- | --- | --- | --- |
+| slot | Set a slot | Integer slot, ItemStack icon | slot(1, new ItemStack(Material.DIRT)) |
+| slot | Set a slot with click | Integer slot, ItemStack icon, Consumer<InventoryClickEvent> action | slot(1, new ItemStack(Material.DIRT), (event)->{/* Do something */}) |
+| add | Add to first air slot | ItemStack icon | add(new ItemStack(Material.DIRT)) |
+| add | Add to first air slot with click | ItemStack icon, Consumer<InventoryClickEvent> action | add(new ItemStack(Material.DIRT), (event)->{/* Do something */}) |
+| makeLine | Bulk add() | Integer amount, ItemStack icon | makeLine(9, new ItemStack(Material.DIRT)) |
+| --- | --- | --- | --- |
+
 ### Override Vanilla Menus
 
 Inside our constructor, we can choose if we'd like to override vanilla menus.
@@ -37,18 +48,18 @@ Inside our constructor, we can choose if we'd like to override vanilla menus.
 public MyGUI() {
     super(...);
     
-    // Example - Override crafting table menu no matter what
-    setOverride(CaramelGuiOverrides.CRAFTING_TABLE, alwaysTrue);
+    // Example - Override crafting table menu no matter what 
+    setOverride(CaramelGuiOverrides.CRAFTING_TABLE, alwaysTrue); // Caramel provides an alwaysTrue for Always overriding
 
-    // Example - Override crafting table menu if player is op
-    setOverride(CaramelGuiOverrides.CRAFTING_TABLE, (player) -> player.isOP());
+    // Example - Override crafting table menu if player is in lobby
+    setOverride(CaramelGuiOverrides.CRAFTING_TABLE, (player) -> player.getWorld().getName().equals("lobby"));
 }
 ```
 
 ### Pagintation
 
-This feature is **on its way** (Functionality is coded and possible, but still combining with other features)
+This feature is **on its way** (90% done)
 
 ### Anvil and Sign Input Prompts
 
-This feature is **on its way** (Anvil prompts are almost done, sign prompts are still WIP)
+This feature is **on its way** (50% done)

@@ -32,4 +32,5 @@ Caramel has a few main features.
 - [Guis](https://pages.klash.dev/Caramel/guis)
 - [Currencies](https://pages.klash.dev/Caramel/currencies)
 - [Recipes](https://pages.klash.dev/Caramel/recipes) - Docs incomplete
-- [Configs](https://pages.klash.dev/Caramel/configs) - Docs incomplete
+- [YAML Configs](https://pages.klash.dev/Caramel/configs) - Docs incomplete
+- [SQL Configs](https://pages.klash.dev/Caramel/sql) - Docs incomplete

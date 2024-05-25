@@ -30,6 +30,6 @@ Caramel has a few main features.
 - [Commands](https://pages.klash.dev/Caramel/commands)
 - [Items](https://pages.klash.dev/Caramel/items) - Docs incomplete
 - [Guis](https://pages.klash.dev/Caramel/guis)
-- [Currencies](https://pages.klash.dev/Caramel/currencies) - Docs incomplete
+- [Currencies](https://pages.klash.dev/Caramel/currencies)
 - [Recipes](https://pages.klash.dev/Caramel/recipes) - Docs incomplete
 - [Configs](https://pages.klash.dev/Caramel/configs) - Docs incomplete

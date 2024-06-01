@@ -2,4 +2,4 @@
 
 
 ## Quickstart
-Quickstart and docs have moved [here](https://pages.klash.dev/Caramel)
+[![Read the Docs](https://raw.githubusercontent.com/intergrav/devins-badges/v3/assets/cozy/documentation/readthedocs_vector.svg)](https://pages.klash.dev/Caramel)

@@ -9,9 +9,6 @@ permissions:
 
 on:
   push:
-    branches: [ master ]
-    paths-ignore:
-      - '*.md'
 
 jobs:
   build:
@@ -30,8 +27,8 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         tag_name: "latest"
-        name: "Automatic Build"
-        body: "Automatically released build for Maven"
+        name: "Caramel Development Build"
+        body: "Nightly development build for Caramel."
         prerelease: true
         files: |
               ./target/*.jar

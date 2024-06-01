@@ -2,6 +2,9 @@
 Caramel is a multipurpose AIO api for PaperAPI plugins. ***WILL NOT WORK FOR SPIGOTAPI***
 
 ## Quickstart
+- Simply drop in the latest Caramel jarfile from [here](https://github.com/klashdevelopment/Caramel/releases/tag/latest)
+
+## Quickstart (Developer)
 - Add Caramel to your maven:
 
 ```xml

@@ -1,7 +1,17 @@
 # Caramel
-Caramel is a multipurpose AIO api for PaperAPI plugins. ***WILL NOT WORK FOR SPIGOTAPI***
+Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and will not support anything but papermc & forks.***
+
+![For Paper](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/paper_vector.svg)
+![For Purpur](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/purpur_vector.svg)
+![Not for Bukkit](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/bukkit_vector.svg)
+![Not for Spigot](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/spigot_vector.svg)
+![Not for Fabric](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/fabric_vector.svg)
+![Not for Forge](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/forge_vector.svg)
 
 ## Quickstart
+- Simply drop in the latest Caramel jarfile from [here](https://github.com/klashdevelopment/Caramel/releases/tag/latest)
+
+## Quickstart (Developer)
 - Add Caramel to your maven:
 
 ```xml
@@ -13,7 +23,7 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***WILL NOT WORK FOR SPI
 <dependency>
    <groupId>dev.klash</groupId>
    <artifactId>Caramel</artifactId>
-   <version>1.0.0</version>
+   <version>1.1.0</version>
    <scope>provided</scope>
 </dependency>
 ```

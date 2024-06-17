@@ -6,6 +6,7 @@ import dev.klash.caramel.gui.CaramelGuiList;
 import dev.klash.caramel.plugin.ImplCaramelDefault;
 import dev.klash.caramel.recipe.CaramelRecipe;
 import dev.klash.caramel.recipe.CaramelRecipeList;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,6 +27,9 @@ public final class Caramel extends JavaPlugin {
     public CaramelCurrencyList currencies;
     public SpiGUI spigui;
     public CaramelGuiList guis;
+
+    public static NamespacedKey isCaramelKey = new NamespacedKey(Caramel.getInstance(), "is-caramel");
+    public static NamespacedKey caramelIDKey = new NamespacedKey(Caramel.getInstance(), "caramel-id");
 
     public String getPrefix() {
         return getConfig().getString("messages.caramel-prefix");

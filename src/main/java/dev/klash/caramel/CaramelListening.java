@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.persistence.PersistentDataType;
 
 public class CaramelListening implements Listener {
     @EventHandler
@@ -28,7 +29,10 @@ public class CaramelListening implements Listener {
             }
         }
         for (CaramelItem item : Caramel.getInstance().items.getItemList()) {
-            if (event.getItem() != null && event.getItem().isSimilar(CaramelFactory.build(item))) {
+            if(event.getItem() == null || event.getItem().getItemMeta() == null) continue;
+            String itemID = item.getDetails().id();
+            String heldItemID = event.getItem().getItemMeta().getPersistentDataContainer().get(Caramel.caramelIDKey, PersistentDataType.STRING);
+            if (event.getItem() != null && heldItemID.equalsIgnoreCase(itemID)) {
                 item.onItemUse(event.getAction().isLeftClick() ? ClickType.LEFT_CLICK : ClickType.RIGHT_CLICK, event.getItem(), event);
                 if(item.cancelEvent()) event.setCancelled(true);
             }

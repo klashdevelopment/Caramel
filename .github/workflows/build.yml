@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Maven Package & Release
 
 concurrency: 
   group: "maven-build"
@@ -26,8 +26,8 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: "latest_1_21"
-        name: "Caramel Development Build"
+        tag_name: "latest-1.21"
+        name: "[1.1.0 for 1.21] Development Build"
         body: "Push-ly development build for Caramel."
         prerelease: true
         files: |

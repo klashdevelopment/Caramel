@@ -9,7 +9,7 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and w
 ![Not for Forge](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/forge_vector.svg)
 
 ## Quickstart
-- Simply drop in the latest Caramel jarfile from [here](https://github.com/klashdevelopment/Caramel/releases/tag/latest)
+- Simply drop in the latest Caramel jarfile from [here](https://github.com/klashdevelopment/Caramel/releases/tag/latest-1.21)
 
 ## Quickstart (Developer)
 - Add Caramel to your maven:

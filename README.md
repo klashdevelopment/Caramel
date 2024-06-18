@@ -7,7 +7,7 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and w
 ![Not for Spigot](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/spigot_vector.svg)
 
 ## How do I use it?
-Jarfile is readily avalible [here](https://github.com/klashdevelopment/Caramel/releases/tag/latest).
+Jarfile is readily avalible [here](https://github.com/klashdevelopment/Caramel/releases/tag/latest-1.21).
 
 For anything else (how to include in maven, etc) see the docs below.
 

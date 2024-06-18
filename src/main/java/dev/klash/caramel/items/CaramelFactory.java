@@ -17,8 +17,8 @@ public class CaramelFactory {
         m.setCustomModelData(item.getDetails().modelData());
 
 
-        m.getPersistentDataContainer().set(Caramel.isCaramelKey, PersistentDataType.BOOLEAN, true);
-        m.getPersistentDataContainer().set(Caramel.caramelIDKey, PersistentDataType.STRING, item.getDetails().id());
+        m.getPersistentDataContainer().set(Caramel.getInstance().isCaramelKey, PersistentDataType.BOOLEAN, true);
+        m.getPersistentDataContainer().set(Caramel.getInstance().caramelIDKey, PersistentDataType.STRING, item.getDetails().id());
 
         i.setItemMeta(m);
         i.setAmount(item.getDetails().defaultStack());

@@ -6,6 +6,7 @@ import dev.klash.caramel.gui.CaramelGuiList;
 import dev.klash.caramel.plugin.ImplCaramelDefault;
 import dev.klash.caramel.recipe.CaramelRecipe;
 import dev.klash.caramel.recipe.CaramelRecipeList;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -19,8 +20,9 @@ import java.util.List;
 
 public final class Caramel extends JavaPlugin {
 
+    private static Caramel instance;
     public static Caramel getInstance() {
-        return getPlugin(Caramel.class);
+        return instance == null ? (Caramel)Bukkit.getPluginManager().getPlugin("Caramel") : instance;
     }
     public CaramelCommandList commands;
     public CaramelItemList items;
@@ -28,8 +30,7 @@ public final class Caramel extends JavaPlugin {
     public SpiGUI spigui;
     public CaramelGuiList guis;
 
-    public static NamespacedKey isCaramelKey = new NamespacedKey(Caramel.getInstance(), "is-caramel");
-    public static NamespacedKey caramelIDKey = new NamespacedKey(Caramel.getInstance(), "caramel-id");
+    public NamespacedKey caramelIDKey, isCaramelKey;
 
     public String getPrefix() {
         return getConfig().getString("messages.caramel-prefix");
@@ -37,8 +38,11 @@ public final class Caramel extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        instance = this;
         saveDefaultConfig();
         spigui = new SpiGUI(this);
+        caramelIDKey = new NamespacedKey(this, "caramel-id");
+        isCaramelKey = new NamespacedKey(this, "is-caramel");
 
         commands = new CaramelCommandList();
         items = new CaramelItemList();

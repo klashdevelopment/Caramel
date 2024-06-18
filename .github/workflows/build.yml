@@ -26,9 +26,9 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: "latest"
+        tag_name: "latest_1_21"
         name: "Caramel Development Build"
-        body: "Nightly development build for Caramel."
+        body: "Push-ly development build for Caramel."
         prerelease: true
         files: |
               ./target/*.jar

@@ -28,16 +28,17 @@ public class CaramelListening implements Listener {
                 }
             }
         }
-        if(event.getItem().getItemMeta().getPersistentDataContainer().has(Caramel.getInstance().isCaramelKey, PersistentDataType.BOOLEAN)) {
+        if (event.getItem() == null || event.getItem().getItemMeta() == null) return;
+//        if(event.getItem().getItemMeta().getPersistentDataContainer().has(Caramel.getInstance().isCaramelKey, PersistentDataType.BOOLEAN)) {
             for (CaramelItem item : Caramel.getInstance().items.getItemList()) {
-                if (event.getItem() == null || event.getItem().getItemMeta() == null) continue;
-                String itemID = item.getDetails().id();
-                String heldItemID = event.getItem().getItemMeta().getPersistentDataContainer().get(Caramel.getInstance().caramelIDKey, PersistentDataType.STRING);
-                if (event.getItem() != null && heldItemID.equalsIgnoreCase(itemID)) {
+//                String itemID = item.getDetails().id();
+//                String heldItemID = event.getItem().getItemMeta().getPersistentDataContainer().get(Caramel.getInstance().caramelIDKey, PersistentDataType.STRING);
+//                if (heldItemID.equalsIgnoreCase(itemID)) {
+                if(CaramelFactory.build(item).isSimilar(event.getItem())) {
                     item.onItemUse(event.getAction().isLeftClick() ? ClickType.LEFT_CLICK : ClickType.RIGHT_CLICK, event.getItem(), event);
                     if (item.cancelEvent()) event.setCancelled(true);
                 }
             }
-        }
+//        }
     }
 }

@@ -28,7 +28,7 @@ jobs:
       with:
         tag_name: "latest-1.21"
         name: "[1.1.0 for 1.21] Development Build"
-        body: "Push-ly development build for Caramel."
-        prerelease: true
+        body: "Push-ly development build for Caramel. Updated on every push - ignore the 'commits to master since this release', github works weird."
+        prerelease: false
         files: |
               ./target/*.jar

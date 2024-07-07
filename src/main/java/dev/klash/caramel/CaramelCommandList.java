@@ -41,7 +41,7 @@ public class CaramelCommandList {
         return null;
     }
     /**
-     * Executes a command.
+     * Executes a command. (Override with this)
      *
      * @param sender The sender of the command.
      * @param label The label of the command.
@@ -50,7 +50,7 @@ public class CaramelCommandList {
      */
     public boolean onCommand(CommandSender sender, String label, String[] args) {
         for(CaramelCommand cmd : commandList) {
-            if(cmd.getDetails().label().equalsIgnoreCase(label)) {
+            if (cmd.getDetails().label().equalsIgnoreCase(label) || Arrays.asList(cmd.getDetails().aliases()).contains(label.toLowerCase())) {
                 List<String> argList = Arrays.asList(args);
                 if(sender instanceof Player) {
                     if(sender.hasPermission(cmd.getDetails().permission())) {

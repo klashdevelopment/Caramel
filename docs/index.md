@@ -14,7 +14,7 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and w
 ## Quickstart (Developer)
 - Add Caramel to your maven:
 
-LATEST VERSION: 1.3.0
+LATEST VERSION: 1.2.0
 
 ```xml
 <repository>

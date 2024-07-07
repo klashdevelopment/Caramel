@@ -14,6 +14,8 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and w
 ## Quickstart (Developer)
 - Add Caramel to your maven:
 
+LATEST VERSION: 1.3.0
+
 ```xml
 <repository>
    <id>klashdevelopment</id>
@@ -23,7 +25,7 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and w
 <dependency>
    <groupId>dev.klash</groupId>
    <artifactId>Caramel</artifactId>
-   <version>1.1.0</version>
+   <version>VERSION</version>
    <scope>provided</scope>
 </dependency>
 ```

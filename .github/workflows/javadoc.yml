@@ -23,6 +23,6 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           java-version: 17
-          javadoc-branch: master
+          javadoc-branch: javadoc
           target-folder: docs/javadoc
           project: maven

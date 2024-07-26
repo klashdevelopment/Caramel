@@ -15,7 +15,7 @@ Result needs to be an ItemStack to return as the output.
 Key needs to be a NamespacedKey with your Plugin/Identifier and the recipe's identifier.
 
 The details are where we define the actual recipe:
-```
+```java
 CaramelRecipeDetail.of(
   new CaramelRecipeValue[] {},
   new String[] {

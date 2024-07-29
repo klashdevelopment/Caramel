@@ -14,6 +14,9 @@ import java.util.List;
 
 public class CaramelUtility {
     public static Component colorcomp(String text) {
+        return MiniMessage.miniMessage().deserialize("<italic:false>"+text);
+    }
+    public static Component stripItalics(String text) {
         return MiniMessage.miniMessage().deserialize(text).decoration(TextDecoration.ITALIC, false);
     }
     public static List<String> tabComplete(String arg, List<String> choices) {

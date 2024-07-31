@@ -24,7 +24,7 @@ public class CaramelBlankConfig {
 
     public void reload() {
         if(dataFile == null) {
-            dataFile = new File(plugin.getDataFolder(), fileName);
+            dataFile = new File(Caramel.getInstance().getDataFolder(), fileName);
         }
         data = YamlConfiguration.loadConfiguration(dataFile);
         InputStream defaultStream = plugin.getResource(fileName);
@@ -50,7 +50,7 @@ public class CaramelBlankConfig {
 
     public void saveBlankConfig() {
         if(dataFile == null) {
-            dataFile = new File(plugin.getDataFolder(), fileName);
+            dataFile = new File(Caramel.getInstance().getDataFolder(), fileName);
         }
         if(!dataFile.exists()) {
             try {

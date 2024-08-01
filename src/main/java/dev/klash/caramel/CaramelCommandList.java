@@ -75,7 +75,7 @@ public class CaramelCommandList {
      */
     public List<String> onTabComplete(@NotNull Command command, @NotNull String[] args) {
         for(CaramelCommand cmd : getCommandList()) {
-            if(cmd.getDetails().label().equalsIgnoreCase(command.getLabel())) {
+            if(cmd.getDetails().label().equalsIgnoreCase(command.getLabel()) || Arrays.asList(cmd.getDetails().aliases()).contains(command.getLabel().toLowerCase())) {
                 return cmd.complete(args);
             }
         }

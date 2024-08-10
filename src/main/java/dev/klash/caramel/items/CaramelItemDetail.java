@@ -5,7 +5,7 @@ import org.bukkit.Material;
 
 import java.util.List;
 
-public record CaramelItemDetail(String id, Component itemName, List<String> lore, int defaultStack, int modelData, Material itemBase) {
+public record CaramelItemDetail(String id, Component itemName, List<String> lore, int defaultStack, int modelData, Material itemBase, FoodProperties food) {
 
     public static class Builder {
         private String id;
@@ -14,6 +14,7 @@ public record CaramelItemDetail(String id, Component itemName, List<String> lore
         private int defaultStack;
         private int modelData;
         private Material itemBase;
+        private FoodProperties food = null;
 
         public Builder id(String id) {
             this.id = id;
@@ -35,6 +36,11 @@ public record CaramelItemDetail(String id, Component itemName, List<String> lore
             return this;
         }
 
+        public Builder food(FoodProperties food) {
+            this.food = food;
+            return this;
+        }
+
         public Builder modelData(int modelData) {
             this.modelData = modelData;
             return this;
@@ -46,7 +52,7 @@ public record CaramelItemDetail(String id, Component itemName, List<String> lore
         }
 
         public CaramelItemDetail build() {
-            return new CaramelItemDetail(id, itemName, lore, defaultStack, modelData, itemBase);
+            return new CaramelItemDetail(id, itemName, lore, defaultStack, modelData, itemBase, food);
         }
     }
 

@@ -1,9 +1,9 @@
-name: Deploy Javadoc
+name: Deploy Javadoc (legacy)
 
 on:
  push:
-#    branches:
-#      - master
+    branches:
+      - none_dont_push_any
 #      - main
 
 jobs:

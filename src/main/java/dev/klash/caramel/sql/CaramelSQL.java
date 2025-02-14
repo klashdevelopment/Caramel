@@ -1,9 +1,12 @@
 package dev.klash.caramel.sql;
 
+import org.jetbrains.annotations.ApiStatus;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+@ApiStatus.Experimental
 public class CaramelSQL {
 
     public String host, port, database, username, password;

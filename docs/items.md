@@ -9,11 +9,12 @@ The documentation for items are WIP, but here's a simple implementation while yo
         public CaramelItemDetail getDetails() {
             return CaramelItemDetail.builder()
                     .id("item_identifier") // Required
-                    .defaultStack(1) // Required
+                    .defaultStack(1) // Optional
                     .modelData(0) // Optional - Custom Model Data
                     .itemBase(Material.PAPER) // Required
                     .itemName(CaramelUtility.colorcomp("<gold><bold>Supports miniMessage")) // Required
                     .lore(Arrays.asList("Lore <red>is cool<yellow>!")) // Required
+					.components(...) // Optional, see below
                     .build();
         }
 
@@ -34,3 +35,15 @@ The documentation for items are WIP, but here's a simple implementation while yo
 ```
 
 Please see Commands for registering, but use `Caramel.getInstance().items` and define it as a `CaramelItem`.
+
+
+### Item components
+As of caramel 1.3.1 (1.21.4) you can add item components!
+
+```java
+/// builder stuff
+.components(
+	CIComponent.of(DataComponentType.EXAMPLE, example), // valued
+	CIComponent.of(DataComponentType.EXAMPLE) // non valued
+)
+```

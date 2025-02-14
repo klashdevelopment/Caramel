@@ -1,5 +1,5 @@
 messages:
-  # If a user is denied permission.
+  # If a user is denied permission. API forces this to use colorcodes and not minimessage sadly :/
   no-permission: "&aYou have no permission to use this command."
   # The caramel prefix only shows on /caramel.
   caramel-prefix: "<yellow>[<gold>Caramel<yellow>]<green>"

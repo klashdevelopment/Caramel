@@ -1,12 +1,14 @@
 package dev.klash.caramel.sql;
 
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
+@ApiStatus.Experimental
 public class CaramelSQLHelper {
 
     private CaramelSQL sql;

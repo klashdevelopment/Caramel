@@ -3,14 +3,20 @@ package dev.klash.caramel.items;
 import com.samjakob.spigui.item.ItemBuilder;
 import dev.klash.caramel.Caramel;
 import dev.klash.caramel.CaramelUtility;
+import dev.klash.caramel.items.components.CIComponent;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.components.FoodComponent;
+import io.papermc.paper.datacomponent.item.FoodProperties;
 import org.bukkit.persistence.PersistentDataType;
 
 public class CaramelFactory {
+    // Allow using <T> parameter
+    private static <T> void setDataHelper(ItemStack i, CIComponent.CIComponentValued<T> component) {
+        i.setData(component.getComponent(), component.getValue());
+    }
     public static ItemStack build(CaramelItem item) {
         ItemStack i = new ItemStack(item.getDetails().itemBase());
         ItemMeta m = i.getItemMeta();
@@ -19,15 +25,19 @@ public class CaramelFactory {
         m.setCustomModelData(item.getDetails().modelData());
 
         if(item.getDetails().food() != null) {
-            FoodComponent food = m.getFood();
-            food.setCanAlwaysEat(item.getDetails().food().canAlwaysEat());
-            food.setNutrition(item.getDetails().food().nutrition());
-            food.setSaturation(item.getDetails().food().saturation());
-            food.setEatSeconds(item.getDetails().food().eatTime());
-            for(FoodEffectProperties fep : item.getDetails().food().effects()) {
-                food.addEffect(fep.effect(), fep.chance());
+            FoodProperties food = FoodProperties.food()
+                    .canAlwaysEat(item.getDetails().food().canAlwaysEat())
+                    .nutrition(item.getDetails().food().nutrition())
+                    .saturation(item.getDetails().food().saturation())
+                    .build();
+            i.setData(DataComponentTypes.FOOD, food);
+        }
+        for (CIComponent component : item.getDetails().components()) {
+            if(component instanceof CIComponent.CIComponentValued<?> valuedComponent) {
+                setDataHelper(i, valuedComponent);
+            } else {
+                i.setData(((CIComponent.CIComponentNonvalued) component).getComponent());
             }
-            m.setFood(food);
         }
 
         m.getPersistentDataContainer().set(Caramel.getInstance().isCaramelKey, PersistentDataType.BOOLEAN, true);

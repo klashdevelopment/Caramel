@@ -190,7 +190,7 @@ public class ImplCaramelDefault {
                             }));
                         }
                         ((Player)sender).openInventory(menu.getInventory());
-                    }else {
+                    } else {
                         sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + " Listing items"));
                         for(CaramelItem item : Caramel.getInstance().items.getItemList()) {
                             sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + "<green> ID <red>" + item.getDetails().id() +" <green> with name <red>" + item.getDetails().itemName()));
@@ -208,7 +208,7 @@ public class ImplCaramelDefault {
                             }));
                         }
                         ((Player)sender).openInventory(menu.getInventory());
-                    }else {
+                    } else {
                         sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + " Listing guis"));
                         for(CaramelGui gui : Caramel.getInstance().guis.getGuis()) {
                             sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + "<green> Title <red>" + gui.title +" <green> with override <red>" + (gui.override==null?"none":gui.override.name())));

@@ -1,6 +1,8 @@
 package dev.klash.caramel.items;
 
+import dev.klash.caramel.CaramelUtility;
 import dev.klash.caramel.items.components.CIComponent;
+import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.jetbrains.annotations.ApiStatus;
@@ -9,19 +11,25 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public record CaramelItemDetail(String id, Component itemName, List<String> lore, int defaultStack, int modelData, Material itemBase, FoodProperties food, List<CIComponent> components) {
+public record CaramelItemDetail(String id, Component itemName, List<String> lore, int defaultStack, int modelData, Material itemBase, Key itemModel, FoodProperties food, List<CIComponent> components) {
     public static class Builder {
         private String id;
-        private Component itemName;
-        private List<String> lore;
+        private Component itemName = CaramelUtility.colorcomp("No name specified");
+        private List<String> lore = Collections.emptyList();
         private int defaultStack = 1;
-        private int modelData;
-        private Material itemBase;
+        private int modelData = -1;
+        private Material itemBase = Material.STICK;
+        @ApiStatus.Experimental private Key itemModel = null;
         @ApiStatus.Experimental private FoodProperties food = null;
         @ApiStatus.Experimental private List<CIComponent> components = Collections.emptyList();
 
         public Builder id(String id) {
             this.id = id;
+            return this;
+        }
+
+        public Builder itemModel(Key itemModel) {
+            this.itemModel = itemModel;
             return this;
         }
 
@@ -69,7 +77,7 @@ public record CaramelItemDetail(String id, Component itemName, List<String> lore
         }
 
         public CaramelItemDetail build() {
-            return new CaramelItemDetail(id, itemName, lore, defaultStack, modelData, itemBase, food, components);
+            return new CaramelItemDetail(id, itemName, lore, defaultStack, modelData, itemBase, itemModel, food, components);
         }
     }
 

@@ -22,8 +22,10 @@ public class CaramelFactory {
         ItemMeta m = i.getItemMeta();
         m.lore(CaramelUtility.formatLoreString(item.getDetails().lore()));
         m.displayName(item.getDetails().itemName());
-        m.setCustomModelData(item.getDetails().modelData());
 
+        if(item.getDetails().modelData() > 0) {
+            m.setCustomModelData(item.getDetails().modelData());
+        }
         if(item.getDetails().food() != null) {
             FoodProperties food = FoodProperties.food()
                     .canAlwaysEat(item.getDetails().food().canAlwaysEat())
@@ -31,6 +33,9 @@ public class CaramelFactory {
                     .saturation(item.getDetails().food().saturation())
                     .build();
             i.setData(DataComponentTypes.FOOD, food);
+        }
+        if(item.getDetails().itemModel() != null) {
+            i.setData(DataComponentTypes.ITEM_MODEL, item.getDetails().itemModel());
         }
         for (CIComponent component : item.getDetails().components()) {
             if(component instanceof CIComponent.CIComponentValued<?> valuedComponent) {

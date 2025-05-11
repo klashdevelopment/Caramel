@@ -6,7 +6,7 @@
 
     <groupId>dev.klash</groupId>
     <artifactId>Caramel</artifactId>
-    <version>1.4.0</version>
+    <version>1.4.1</version>
     <packaging>jar</packaging>
 
     <name>Caramel</name>
@@ -90,6 +90,10 @@
             <id>klashdevelopment</id>
             <url>https://raw.githubusercontent.com/klashdevelopment/mvn/main/repository/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -101,12 +105,12 @@
         <dependency>
             <groupId>com.samjakob</groupId>
             <artifactId>SpiGUI</artifactId>
-            <version>1.4.0-recomp</version>
+            <version>1.4.1</version>
         </dependency>
         <dependency>
             <groupId>net.wesjd</groupId>
             <artifactId>anvilgui</artifactId>
-            <version>1.10.4-SNAPSHOT</version>
+            <version>1.10.5-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

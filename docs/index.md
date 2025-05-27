@@ -24,7 +24,7 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and w
 <dependency>
    <groupId>dev.klash</groupId>
    <artifactId>Caramel</artifactId>
-   <version>1.4.0</version>
+   <version>1.4.2</version>
    <scope>provided</scope>
 </dependency>
 ```

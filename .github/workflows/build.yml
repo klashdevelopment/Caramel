@@ -27,7 +27,7 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         tag_name: "latest-1.21.4"
-        name: "[1.4.1 for 1.21.4] Development Build"
+        name: "[1.4.2 for 1.21.4] Development Build"
         body: "Push-ly development build for Caramel. Updated on every push - ignore the 'commits to master since this release', github works weird."
         prerelease: false
         files: |

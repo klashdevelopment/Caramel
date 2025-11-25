@@ -3,6 +3,8 @@ package dev.klash.caramel.gui;
 import com.samjakob.spigui.buttons.SGButton;
 import com.samjakob.spigui.buttons.SGButtonListener;
 import com.samjakob.spigui.menu.SGMenu;
+import com.samjakob.spigui.toolbar.SGDefaultToolbarBuilder;
+import com.samjakob.spigui.toolbar.SGToolbarBuilder;
 import dev.klash.caramel.Caramel;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -18,9 +20,16 @@ public abstract class CaramelGui {
 
     public String title;
     int rows;
-    public CaramelGui(String title, int rows) {
+    boolean paginated = false;
+    SGToolbarBuilder builder;
+    public CaramelGui(String title, int rows, boolean paginated) {
         this.title = title;
         this.rows = rows;
+        this.paginated = paginated;
+        this.builder = Caramel.getInstance().spigui.getDefaultToolbarBuilder();
+    }
+    public void setPageNavigation(SGToolbarBuilder builder) {
+        this.builder = builder;
     }
     public abstract void setup(Player player);
     public void setOverride(CaramelGuiOverrides override, Function<Player, Boolean> finalCheck) {
@@ -47,9 +56,18 @@ public abstract class CaramelGui {
     public void add(ItemStack item, SGButtonListener listener) {
         menu.addButton(new SGButton(item).withListener(listener));
     }
+    public void addRaw(SGButton button) {
+        menu.addButton(button);
+    }
+    public void slotRaw(int slot, SGButton button) {
+        menu.setButton(slot, button);
+    }
     public void open(Player player) {
         menu = Caramel.getInstance().spigui.create(title, rows);
-        menu.setAutomaticPaginationEnabled(false);
+        menu.setAutomaticPaginationEnabled(paginated);
+        if(paginated) {
+            menu.setToolbarBuilder(builder);
+        }
         setup(player);
         player.openInventory(menu.getInventory());
     }

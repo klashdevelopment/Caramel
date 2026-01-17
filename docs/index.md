@@ -12,7 +12,7 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and w
 - Simply drop in the latest Caramel jarfile from [here](https://github.com/klashdevelopment/Caramel/releases/tag/latest-1.21)
 
 ## Quickstart (Developer)
-- Make sure you have Paper API 1.21.4 in your pom
+- Make sure you have Paper API 1.21.11 in your pom
 - Add Caramel to your maven:
 
 ```xml
@@ -24,7 +24,7 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and w
 <dependency>
    <groupId>dev.klash</groupId>
    <artifactId>Caramel</artifactId>
-   <version>1.4.2</version>
+   <version>1.4.6</version>
    <scope>provided</scope>
 </dependency>
 ```

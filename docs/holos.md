@@ -1,7 +1,7 @@
 # Holograms
 
 Caramel holograms are lightweight wrappers around Minecraft `TextDisplay` entities, designed for easy multi-line floating text.
-They use holograms
+They use individual displays for each line, making for better support with ViaBackwards.
 
 ---
 
@@ -15,12 +15,12 @@ CaramelHologram hologram = new CaramelHologram();
 
 // Hologram with initial lines
 CaramelHologram hologram = new CaramelHologram(List.of(
-        new CaramelHologramLine(CaramelUtility.colorcomp("Hello")),
-        new CaramelHologramLine(CaramelUtility.colorcomp("World"))
+        new CaramelHologramLine(CaramelUtility.colorcomp("<blue>Hello")),
+        new CaramelHologramLine(CaramelUtility.colorcomp("<red>World"))
 ));
 ````
 
-Before spawning, you **must** set a location:
+Before spawning, you **must** set a location (and update() it after):
 
 ```java
 hologram.setLocation(location);
@@ -35,9 +35,9 @@ hologram.setLocation(location);
 You can fully control the hologram’s lines after creation.
 
 ```java
-hologram.addLine(new CaramelHologramLine(Component.text("New Line")));
-hologram.addFront(new CaramelHologramLine(Component.text("Top Line")));
-hologram.addBack(new CaramelHologramLine(Component.text("Bottom Line")));
+hologram.addLine(new CaramelHologramLine(CaramelUtility.colorcomp("New Line")));
+hologram.addFront(new CaramelHologramLine(CaramelUtility.colorcomp("Top Line")));
+hologram.addBack(new CaramelHologramLine(CaramelUtility.colorcomp("Bottom Line")));
 ```
 
 Removing lines:
@@ -52,7 +52,7 @@ Replacing all lines:
 
 ```java
 hologram.setLines(List.of(
-  new CaramelHologramLine(Component.text("Replaced"))
+  new CaramelHologramLine(CaramelUtility.colorcomp("Replaced"))
 ));
 ```
 
@@ -61,6 +61,21 @@ Retrieving lines:
 ```java
 List<CaramelHologramLine> lines = hologram.getLines();
 ```
+
+Each line also has properties that can help it:
+```
+line.withTextOpacity(byte opacity); // out of 225, -1 for unset
+line.withSeeThrough(boolean seeThrough);
+line.withShadow(boolean shadow);
+line.withLineWidth(int lineWidth); // highly recomended to not change. -1 for auto.
+line.withText(Component text);
+line.withBackground(Color color); // can be null for unset
+line.withBillboard(Display.Billboard value);
+line.withAlignment(TextAlignment alignment);
+```
+
+And default gap lines also exist: 
+`CaramelHologramLine.gapLine()`
 
 ---
 
@@ -75,8 +90,8 @@ hologram.setLineHeight(0.25);
 double spacing = hologram.getLineHeight();
 ```
 
-Values are in **world units (blocks)**, not pixels.
-Typical values range from `0.22` to `0.30`.
+Values are in blocks.
+Typical values range from `0.22` to `0.30`, the default is `0.25` for seamless.
 
 ---
 
@@ -148,13 +163,11 @@ Typical usage flow:
 CaramelHologram hologram = new CaramelHologram();
 hologram.setLocation(location);
 
-hologram.addLine(new CaramelHologramLine(Component.text("Line 1")));
-hologram.addLine(new CaramelHologramLine(Component.text("Line 2")));
+hologram.addLine(new CaramelHologramLine(CaramelUtility.colorcomp("Line 1")));
+hologram.addLine(new CaramelHologramLine(CaramelUtility.colorcomp("Line 2")));
 
 hologram.setLineHeight(0.25);
 hologram.show();
 ```
 
 That’s all you need for clean, stable holograms.
-
-```

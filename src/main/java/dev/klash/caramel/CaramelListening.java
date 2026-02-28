@@ -22,7 +22,7 @@ public class CaramelListening implements Listener {
                         if(gui.finalCheck.apply(event.getPlayer())) {
                             event.setCancelled(true);
                             event.getPlayer().closeInventory();
-                            Bukkit.getScheduler().scheduleSyncDelayedTask(Caramel.getInstance(), () -> gui.open(event.getPlayer()), 1L);
+                            Bukkit.getRegionScheduler().runDelayed(Caramel.getInstance(), event.getPlayer().getLocation(), (st) -> gui.open(event.getPlayer()), 1L);
                         }
                     }
                 }

@@ -9,6 +9,8 @@ import dev.klash.caramel.commands.CaramelCommandDetail;
 import dev.klash.caramel.CaramelUtility;
 import dev.klash.caramel.currency.CaramelCurrency;
 import dev.klash.caramel.gui.CaramelGui;
+import dev.klash.caramel.hologram.CaramelHologram;
+import dev.klash.caramel.hologram.CaramelHologramLine;
 import dev.klash.caramel.items.CaramelFactory;
 import dev.klash.caramel.items.CaramelItem;
 import dev.klash.caramel.items.CaramelItemDetail;
@@ -18,6 +20,7 @@ import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -58,6 +61,8 @@ public class ImplCaramelDefault {
             super(Caramel.getInstance(), "Caramel Coins", "caramelcoin", 10);
         }
     }
+
+    public static List<CaramelHologram> demoHolos = new ArrayList<>();
     public static class CaramelBaseDefaultCommand implements CaramelCommand {
 
         @Override
@@ -68,11 +73,24 @@ public class ImplCaramelDefault {
         @Override
         public List<String> complete(String[] args) {
             if(args.length == 1) {
-                return CaramelUtility.tabComplete(args[0], Arrays.asList("help", "version", "commands", "items", "currency", "reload", "guis"));
+                return CaramelUtility.tabComplete(args[0], Arrays.asList("help", "holo", "version", "commands", "items", "item", "currency", "reload", "guis"));
             }
             if(args.length == 2) {
                 if(args[0].equalsIgnoreCase("currency")) {
                     return CaramelUtility.tabComplete(args[1], Arrays.asList("list", "give", "set", "get"));
+                }
+                if(args[0].equalsIgnoreCase("holo")) {
+                    return CaramelUtility.tabComplete(args[1], Arrays.asList("spawndemo", "deletedemos"));
+                }
+                if(args[0].equalsIgnoreCase("item")) {
+                    List<String> itemIds = new ArrayList<>();
+                    for(CaramelItem item : Caramel.getInstance().items.getItemList()) {
+                        itemIds.add(item.getDetails().id());
+                    }
+                    return CaramelUtility.tabComplete(args[1], itemIds);
+                }
+                if(args[0].equalsIgnoreCase("reload")) {
+                    return CaramelUtility.tabComplete(args[1], Arrays.asList("config", "plugin"));
                 }
             }
             return Collections.emptyList();
@@ -93,7 +111,7 @@ public class ImplCaramelDefault {
                         }
                     }
                     sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + " Click ").append(
-                            Component.text("here").hoverEvent(HoverEvent.showText(Component.text("/caramel _reload " + String.join(" ", plugins)))).clickEvent(ClickEvent.runCommand("/caramel _reload " + String.join(" ", plugins))).color(TextColor.color(0x0000FF))
+                            Component.text("here").hoverEvent(HoverEvent.showText(Component.text("Reload: " + String.join(" ", plugins)))).clickEvent(ClickEvent.runCommand("/caramel _reload " + String.join(" ", plugins))).color(TextColor.color(0x0000FF))
                     ).append(CaramelUtility.colorcomp("<green> to finish the job.")));
 
                     Bukkit.getServer().dispatchCommand(sender, "plugman reload Caramel");
@@ -101,6 +119,30 @@ public class ImplCaramelDefault {
                 if(args.get(0).equalsIgnoreCase("_reload")) {
                     for(String plugin : args.subList(1, args.size())) {
                         Bukkit.getServer().dispatchCommand(sender, "plugman reload " + plugin);
+                    }
+                }
+                if(args.get(0).equalsIgnoreCase("holo")) {
+                    if((sender instanceof Player) && args.size() == 2) {
+                        if(args.get(1).equalsIgnoreCase("spawndemo")) {
+                            CaramelHologram holo = new CaramelHologram(Arrays.asList(
+                                    new CaramelHologramLine(Component.text("Caramel Hologram Demo").color(TextColor.color(0xFF0000)).decorate(TextDecoration.BOLD)),
+                                    new CaramelHologramLine(Component.text("This is a hologram spawned by the command /caramel holo spawndemo").color(TextColor.color(0x00FF00))),
+                                    new CaramelHologramLine(Component.text("It can be removed by the command /caramel holo deletedemos").color(TextColor.color(0x0000FF)))
+                            ));
+                            holo.setLocation(((Player) sender).getLocation().add(0, 2, 0));
+                            demoHolos.add(holo);
+                            holo.show();
+                            sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + " Spawned a demo hologram at your location!"));
+                        }
+                        if(args.get(1).equalsIgnoreCase("deletedemos")) {
+                            for(CaramelHologram holo : demoHolos) {
+                                holo.destroy();
+                                sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + " Destroyed a demo hologram!"));
+                            }
+                            demoHolos.clear();
+                        }
+                    } else {
+                        sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + " Valid subcommands are <red>spawndemo<green>, <red>deletedemos<green>. Must be player."));
                     }
                 }
                 if(args.get(0).equalsIgnoreCase("version")) {
@@ -194,6 +236,23 @@ public class ImplCaramelDefault {
                         sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + " Listing items"));
                         for(CaramelItem item : Caramel.getInstance().items.getItemList()) {
                             sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + "<green> ID <red>" + item.getDetails().id() +" <green> with name <red>" + item.getDetails().itemName()));
+                        }
+                    }
+                }
+                if(args.get(0).equalsIgnoreCase("item")) {
+                    if(args.size() == 2) {
+                        sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + " Usage: /caramel item <item_id>"));
+                    } else {
+                        CaramelItem item = Caramel.getInstance().items.getItemList().stream().filter(i -> i.getDetails().id().equalsIgnoreCase(args.get(1))).findFirst().orElse(null);
+                        if(item != null) {
+                            if(sender instanceof Player) {
+                                ((Player) sender).getInventory().addItem(CaramelFactory.build(item));
+                                sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + " Gave you item <red>" + item.getDetails().id()));
+                            } else {
+                                sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + " This command can only be run by a player!"));
+                            }
+                        } else {
+                            sender.sendMessage(CaramelUtility.colorcomp(Caramel.getInstance().getPrefix() + " Invalid item id!"));
                         }
                     }
                 }

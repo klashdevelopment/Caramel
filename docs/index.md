@@ -9,7 +9,7 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and w
 ![Not for Forge](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/forge_vector.svg)
 
 ## Quickstart
-- Simply drop in the latest Caramel jarfile from [here](https://github.com/klashdevelopment/Caramel/releases/tag/latest-1.21)
+- Simply drop in the latest Caramel jarfile from [Releases](https://github.com/klashdevelopment/Caramel/releases)
 
 ## Quickstart (Developer)
 - Make sure you have Paper API 1.21.11 in your pom
@@ -24,7 +24,7 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and w
 <dependency>
    <groupId>dev.klash</groupId>
    <artifactId>Caramel</artifactId>
-   <version>1.4.6</version>
+   <version>1.4.7</version>
    <scope>provided</scope>
 </dependency>
 ```
@@ -41,7 +41,8 @@ Caramel has a few main features.
 - [Commands](https://pages.klash.dev/Caramel/commands)
 - [Items](https://pages.klash.dev/Caramel/items) (WIP Docs)
 - [Guis](https://pages.klash.dev/Caramel/guis)
+- [Holograms](https://pages.klash.dev/Caramel/holos)
 - [Currencies](https://pages.klash.dev/Caramel/currencies)
 - [Recipes](https://pages.klash.dev/Caramel/recipes)
 - [YAML Configs](https://pages.klash.dev/Caramel/configs)
-- [SQL Configs](https://pages.klash.dev/Caramel/sql)
+- [SQL Databases](https://pages.klash.dev/Caramel/sql)

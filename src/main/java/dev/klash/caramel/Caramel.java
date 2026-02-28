@@ -3,6 +3,7 @@ package dev.klash.caramel;
 import com.samjakob.spigui.SpiGUI;
 import dev.klash.caramel.commands.CaramelCommand;
 import dev.klash.caramel.gui.CaramelGuiList;
+import dev.klash.caramel.hologram.CaramelHologram;
 import dev.klash.caramel.plugin.ImplCaramelDefault;
 import dev.klash.caramel.recipe.CaramelRecipe;
 import dev.klash.caramel.recipe.CaramelRecipeList;
@@ -11,6 +12,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TextDisplay;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -54,6 +56,11 @@ public final class Caramel extends JavaPlugin {
         commands.register(new ImplCaramelDefault.CaramelBaseDefaultCommand());
         items.register(new ImplCaramelDefault.CaramelBaseDefaultItem());
         currencies.register(new ImplCaramelDefault.CaramelBaseDefaultCurrency());
+    }
+
+    @Override
+    public void onDisable() {
+        ImplCaramelDefault.demoHolos.forEach(CaramelHologram::destroy);
     }
 
     public CaramelRecipeList createRecipeList(CaramelRecipe... recipes) {

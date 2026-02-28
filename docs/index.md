@@ -8,6 +8,8 @@ Caramel is a multipurpose AIO api for PaperAPI plugins. ***Caramel can not and w
 ![Not for Fabric](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/fabric_vector.svg)
 ![Not for Forge](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/unsupported/forge_vector.svg)
 
+**Also supports Folia.**
+
 ## Quickstart
 - Simply drop in the latest Caramel jarfile from [Releases](https://github.com/klashdevelopment/Caramel/releases)
 
